@@ -11,6 +11,6 @@ import java.util.List;
 public interface PizzaRepository  extends JpaRepository<PizzaEntity, Long> {
 
     @Query("select pizza from PizzaEntity pizza " +
-            "where pizza.name like %:query% ")
+            "where lower(pizza.name) like %:query% ") // zostawic dla front endu :)
     List<PizzaEntity> searchByQuery(String query);
 }
