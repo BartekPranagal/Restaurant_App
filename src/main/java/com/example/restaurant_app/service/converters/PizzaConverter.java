@@ -2,7 +2,9 @@ package com.example.restaurant_app.service.converters;
 
 import com.example.restaurant_app.model.dao.PizzaEntity;
 import com.example.restaurant_app.model.dto.PizzaResponse;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PizzaConverter implements Convertable<Object, PizzaEntity, PizzaResponse> {
     @Override
     public PizzaEntity fromDto(Object o) {
