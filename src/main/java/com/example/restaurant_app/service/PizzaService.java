@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +30,15 @@ public class PizzaService {
         PizzaEntity pizzaEntity = pizzaRepository.findById(pizzaId).orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,"brak szukanego id"));
         return pizzaConverter.toDto(pizzaEntity);
+    }
+
+    public List<PizzaResponse> getPizzaByQuery(String query){
+        return Optional.ofNullable(query)
+                .map(param -> pizzaRepository.searchByQuery(param))
+                .orElse(pizzaRepository.findAll())
+                .stream()
+                .map(pizzaEntity -> pizzaConverter.toDto(pizzaEntity))
+                .collect(Collectors.toList());
     }
 
 }
