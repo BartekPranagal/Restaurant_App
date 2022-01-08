@@ -26,7 +26,7 @@ public class PizzaController {
         return pizzaService.getById(pizzaId);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping()
     public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
         return pizzaService.getPizzaByQuery(query);
     }
