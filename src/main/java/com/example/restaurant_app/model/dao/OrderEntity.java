@@ -1,10 +1,7 @@
 package com.example.restaurant_app.model.dao;
 
 import lombok.Data;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,8 +21,7 @@ public class OrderEntity {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_pizza",
-            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "pizza_id",
-                    referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "pizza_id"))
     private List<PizzaEntity> orderedPizza;
 }
