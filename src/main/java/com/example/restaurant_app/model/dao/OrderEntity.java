@@ -22,14 +22,10 @@ public class OrderEntity {
     @Column(name = "orderType")
     private OrderType orderType;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_pizza",
-            joinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "pizza_id",
                     referencedColumnName = "id"))
     private List<PizzaEntity> orderedPizza;
-
-//    @OneToMany(fetch = FetchType.EAGER,mappedBy = "order")
-//    private List<PizzaEntity> orderedPizza = new ArrayList<>();
-
 }

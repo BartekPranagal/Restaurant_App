@@ -6,3 +6,4 @@ INSERT into Pizza(NAME,DESCRIPTION) VALUES ('Decoro','ciasto, sos pomidorowy, se
 INSERT into Pizza(NAME,DESCRIPTION) VALUES ('Napoletana','ciasto, sos pomidorowy, ser, salami, oliwki zielone, papryczki jalapenos, oregano');
 
 
+

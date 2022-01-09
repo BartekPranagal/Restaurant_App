@@ -19,8 +19,4 @@ public class PizzaEntity {
 
     @Column(name = "Description")
     private String description;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "order_id")
-//    private OrderEntity order;
 }
