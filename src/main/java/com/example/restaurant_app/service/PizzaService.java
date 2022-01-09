@@ -1,10 +1,15 @@
 package com.example.restaurant_app.service;
 
+import com.example.restaurant_app.model.dao.OrderEntity;
 import com.example.restaurant_app.model.dao.PizzaEntity;
+import com.example.restaurant_app.model.dto.OrderRequest;
+import com.example.restaurant_app.model.dto.OrderResponse;
 import com.example.restaurant_app.model.dto.PizzaResponse;
+import com.example.restaurant_app.repository.OrderRepository;
 import com.example.restaurant_app.repository.PizzaRepository;
 import com.example.restaurant_app.service.converters.PizzaConverter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.criterion.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,6 +24,7 @@ public class PizzaService {
 
     private final PizzaRepository pizzaRepository;
     private final PizzaConverter pizzaConverter;
+    private final OrderRepository orderRepository;
 
     public List<PizzaResponse> getMenu() {
         return pizzaRepository.findAll().stream()
@@ -40,5 +46,18 @@ public class PizzaService {
                 .map(pizzaEntity -> pizzaConverter.toDto(pizzaEntity))
                 .collect(Collectors.toList());
     }
+
+    public OrderResponse addPizza(OrderRequest request){
+        OrderEntity pizzaEntity = orderRepository.getById(request.getPizzaId());
+        return  convertOrderResponseToDto(pizzaEntity);
+    }
+
+    private OrderResponse convertOrderResponseToDto(OrderEntity entity){
+        return OrderResponse.builder()
+                .id(entity.getId())
+                .orderType(entity.getOrderType())
+                .orderList(entity.getOrderedPizza())
+                .build();
+    }fgdf
 
 }
