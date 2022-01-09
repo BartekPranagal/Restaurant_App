@@ -22,7 +22,7 @@ public class OrderEntity {
     @Column(name = "orderType")
     private OrderType orderType;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_pizza",
             joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "pizza_id",
