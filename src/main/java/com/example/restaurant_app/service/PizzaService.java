@@ -47,17 +47,5 @@ public class PizzaService {
                 .collect(Collectors.toList());
     }
 
-    public OrderResponse addPizza(OrderRequest request){
-        OrderEntity pizzaEntity = orderRepository.getById(request.getPizzaId());
-        return  convertOrderResponseToDto(pizzaEntity);
-    }
-
-    private OrderResponse convertOrderResponseToDto(OrderEntity entity){
-        return OrderResponse.builder()
-                .id(entity.getId())
-                .orderType(entity.getOrderType())
-                .orderList(entity.getOrderedPizza())
-                .build();
-    }fgdf
 
 }
