@@ -3,7 +3,6 @@ package com.example.restaurant_app.controller;
 import com.example.restaurant_app.model.dto.PizzaResponse;
 import com.example.restaurant_app.service.PizzaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
