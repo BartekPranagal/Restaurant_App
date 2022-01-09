@@ -28,4 +28,5 @@ public class PizzaController {
     public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
         return pizzaService.getPizzaByQuery(query);
     }
+
 }
