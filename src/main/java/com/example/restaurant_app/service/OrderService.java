@@ -21,7 +21,7 @@ public class OrderService {
     public OrderResponse createOrder(OrderRequest request) {
         OrderEntity toSave = orderConverter.fromDto(request);
         OrderEntity savedOrderEntity = orderRepository.save(toSave);
-        return  orderConverter.toDto(toSave);
+        return  orderConverter.toDto(savedOrderEntity);
 
     }
 }

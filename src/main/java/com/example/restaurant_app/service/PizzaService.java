@@ -1,6 +1,7 @@
 package com.example.restaurant_app.service;
 
 import com.example.restaurant_app.model.dao.PizzaEntity;
+import com.example.restaurant_app.model.dto.PizzaRequest;
 import com.example.restaurant_app.model.dto.PizzaResponse;
 import com.example.restaurant_app.repository.PizzaRepository;
 import com.example.restaurant_app.service.converters.PizzaConverter;
@@ -41,4 +42,27 @@ public class PizzaService {
                 .collect(Collectors.toList());
     }
 
+    public Long deletePizza(Long pizzaId) {
+        pizzaRepository.findById(pizzaId);
+        pizzaRepository.deleteById(pizzaId);
+        return pizzaId;
+    }
+
+    public PizzaResponse createNewPizza(PizzaRequest pizzaRequest) {
+        PizzaEntity pizzaToAdd = pizzaConverter.fromDto(pizzaRequest);
+        PizzaEntity savedPizza = pizzaRepository.save(pizzaToAdd);
+        return pizzaConverter.toDto(savedPizza);
+    }
+
+    public PizzaResponse updatePizza(Long pizzaId, PizzaRequest pizzaRequest) {
+
+        PizzaEntity pizzaToChange = pizzaRepository.findById(pizzaId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Element o podanym ID nie istneiej"));
+        pizzaToChange.setName(pizzaRequest.getName());
+        pizzaToChange.setDescription(pizzaRequest.getDescription());
+
+        pizzaRepository.save(pizzaToChange);
+        
+        return pizzaConverter.toDto(pizzaToChange);
+    }
 }
