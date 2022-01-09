@@ -1,5 +1,6 @@
 package com.example.restaurant_app.controller;
 
+import com.example.restaurant_app.model.dto.PizzaRequest;
 import com.example.restaurant_app.model.dto.PizzaResponse;
 import com.example.restaurant_app.service.PizzaService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,22 @@ public class PizzaController {
     public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
         return pizzaService.getPizzaByQuery(query);
     }
+
+    @DeleteMapping(path = "menu/{id}")
+    public Long deletePizza(@PathVariable(name = "id") Long pizzaId){
+        return pizzaService.deletePizza(pizzaId);
+    }
+
+    @PostMapping(path = "/menu")
+    public PizzaResponse addNewPizza(@RequestBody PizzaRequest pizzaRequest){
+        return pizzaService.createNewPizza(pizzaRequest);
+    }
+
+    @PutMapping(path = "/{id}")
+    public PizzaResponse modifyPizza(@PathVariable(name = "id") Long pizzaId,@RequestBody PizzaRequest pizzaRequest){
+        return pizzaService.updatePizza(pizzaId,pizzaRequest);
+    }
+
+
 
 }
