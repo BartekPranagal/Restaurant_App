@@ -1,5 +1,6 @@
 package com.example.restaurant_app.model.dao;
 
+import com.example.restaurant_app.model.dto.OrderType;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.List;

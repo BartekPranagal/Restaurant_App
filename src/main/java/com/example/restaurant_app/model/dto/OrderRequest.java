@@ -1,6 +1,5 @@
 package com.example.restaurant_app.model.dto;
 
-import com.example.restaurant_app.model.dao.OrderType;
 import com.example.restaurant_app.model.dao.PizzaEntity;
 import lombok.Data;
 

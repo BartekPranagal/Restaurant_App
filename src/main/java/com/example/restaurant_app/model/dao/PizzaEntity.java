@@ -3,6 +3,7 @@ package com.example.restaurant_app.model.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Pizza")
@@ -10,7 +11,7 @@ import javax.persistence.*;
 public class PizzaEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -19,4 +20,14 @@ public class PizzaEntity {
 
     @Column(name = "Description")
     private String description;
+
+    @Column(name = "Price")
+    private Float price;
+
+    @Column(name = "Sale")
+    private Boolean isOnSale;
+
+    @Column(name = "Vege")
+    private  Boolean isVege;
+
 }

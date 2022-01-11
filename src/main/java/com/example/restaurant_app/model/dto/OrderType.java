@@ -1,4 +1,4 @@
-package com.example.restaurant_app.model.dao;
+package com.example.restaurant_app.model.dto;
 
 public enum OrderType {
 

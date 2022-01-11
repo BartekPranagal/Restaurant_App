@@ -61,8 +61,6 @@ public class PizzaService {
         pizzaToChange.setName(pizzaRequest.getName());
         pizzaToChange.setDescription(pizzaRequest.getDescription());
 
-        pizzaRepository.save(pizzaToChange);
-        
         return pizzaConverter.toDto(pizzaToChange);
     }
 }
