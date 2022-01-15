@@ -6,4 +6,7 @@ import lombok.Data;
 public class PizzaRequest {
     private String name;
     private String description;
+    private Float smallPrice;
+    private Float mediumPrice;
+    private Float bigPrice;
 }

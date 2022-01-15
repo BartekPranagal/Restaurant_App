@@ -1,6 +1,7 @@
 package com.example.restaurant_app.model.dao;
 
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -28,4 +29,7 @@ public class NoteEntity {
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserEntity user;
+
+
+
 }

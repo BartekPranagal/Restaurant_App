@@ -9,7 +9,7 @@ public class NoteRequest {
 
     private String comment;
     private Integer ratio;
-    private PizzaEntity pizza;
-    private UserEntity user;
+//    private PizzaEntity pizza;
+//    private UserEntity user;
 
 }

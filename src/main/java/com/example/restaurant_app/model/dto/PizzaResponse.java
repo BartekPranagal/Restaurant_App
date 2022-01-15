@@ -10,4 +10,7 @@ public class PizzaResponse {
     private Long id;
     private String name;
     private String description;
+    private Float smallPrice;
+    private Float mediumPrice;
+    private Float bigPrice;
 }

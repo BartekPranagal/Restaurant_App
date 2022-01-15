@@ -11,9 +11,9 @@ public class NoteConverter implements Convertable<NoteRequest, NoteEntity, NoteR
     @Override
     public NoteEntity fromDto(NoteRequest noteRequest) {
         NoteEntity noteEntity = new NoteEntity();
-        noteEntity.setUser(noteRequest.getUser());
+//        noteEntity.setUser(noteRequest.getUser());
         noteEntity.setComment(noteRequest.getComment());
-        noteEntity.setPizza(noteRequest.getPizza());
+//        noteEntity.setPizza(noteRequest.getPizza());
         noteEntity.setRatio(noteRequest.getRatio());
 
         return noteEntity;
@@ -25,8 +25,6 @@ public class NoteConverter implements Convertable<NoteRequest, NoteEntity, NoteR
                 .id(noteEntity.getId())
                 .comment(noteEntity.getComment())
                 .ratio(noteEntity.getRatio())
-                .pizza(noteEntity.getPizza())
-                .user(noteEntity.getUser())
                 .build();
     }
 }

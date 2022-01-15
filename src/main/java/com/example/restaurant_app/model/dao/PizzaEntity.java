@@ -20,8 +20,14 @@ public class PizzaEntity {
     @Column(name = "Description")
     private String description;
 
-    @Column(name = "Price")
-    private Float price;
+    @Column(name = "small_price")
+    private Float smallPrice;
+
+    @Column(name = "medium_price")
+    private Float mediumPrice;
+
+    @Column(name = "big_price")
+    private Float bigPrice;
 
     @Column(name = "Sale")
     private Boolean isOnSale;
