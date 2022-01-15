@@ -13,6 +13,9 @@ public class PizzaConverter implements Convertable<PizzaRequest, PizzaEntity, Pi
         PizzaEntity pizzaEntity = new PizzaEntity();
         pizzaEntity.setName(request.getName());
         pizzaEntity.setDescription(request.getDescription());
+        pizzaEntity.setSmallPrice(request.getSmallPrice());
+        pizzaEntity.setMediumPrice(request.getMediumPrice());
+        pizzaEntity.setBigPrice(request.getBigPrice());
         return pizzaEntity;
     }
 
@@ -22,6 +25,9 @@ public class PizzaConverter implements Convertable<PizzaRequest, PizzaEntity, Pi
                 .id(pizzaEntity.getId())
                 .name(pizzaEntity.getName())
                 .description(pizzaEntity.getDescription())
+                .smallPrice(pizzaEntity.getSmallPrice())
+                .mediumPrice(pizzaEntity.getMediumPrice())
+                .bigPrice(pizzaEntity.getBigPrice())
                 .build();
     }
 }
