@@ -11,11 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200/")
 public class PizzaController {
 
     private final PizzaService pizzaService;
 
-    @GetMapping(path = "/menu")
+    @GetMapping(path = "/menu/all")
     public List<PizzaResponse> getMenu(){
         return pizzaService.getMenu();
     }
@@ -25,7 +26,7 @@ public class PizzaController {
         return pizzaService.getById(pizzaId);
     }
 
-    @GetMapping()
+    @GetMapping(path = "/menu")
     public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
         return pizzaService.getPizzaByQuery(query);
     }
