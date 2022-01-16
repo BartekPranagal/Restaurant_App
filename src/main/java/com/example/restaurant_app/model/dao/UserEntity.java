@@ -3,6 +3,7 @@ package com.example.restaurant_app.model.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")
@@ -26,6 +27,9 @@ public class UserEntity {
     @Column(name = "email")
     private String mail;
 
+    @Column(name = "nickname")
+    private String nickname;
+
     @Column(name = "password")
     private String password;
 
@@ -33,7 +37,15 @@ public class UserEntity {
     private String adress;
 
     @Column(name = "active")
-    private Boolean isActive;
+    private boolean isActive;
+
+    @ManyToMany
+    List<AuthorityEntity> authorities;
+
+
+//    @OneToMany(mappedBy = "owner")
+//    List<OrderEntity> orderEntityList;
+
 
     //lista/enum? authorities?
     //lista ocen/komentarzy?
