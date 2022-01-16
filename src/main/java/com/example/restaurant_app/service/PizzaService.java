@@ -57,7 +57,7 @@ public class PizzaService {
     public PizzaResponse updatePizza(Long pizzaId, PizzaRequest pizzaRequest) {
 
         PizzaEntity pizzaToChange = pizzaRepository.findById(pizzaId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Element o podanym ID nie istneiej"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Element o podanym ID nie istnieje"));
         pizzaToChange.setName(pizzaRequest.getName());
         pizzaToChange.setDescription(pizzaRequest.getDescription());
 

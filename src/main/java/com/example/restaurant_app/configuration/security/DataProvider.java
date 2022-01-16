@@ -32,11 +32,12 @@ public class DataProvider implements CommandLineRunner {
             userRole = authorityRepository.save(userRole);
 
             UserEntity user = new UserEntity();
-            user.setNickname("Admin");
+            user.setLogin("Admin");
             user.setMail("Admin@gmail.com");
             user.setPassword(passwordEncoder.encode("Admin123"));
             user.setActive(true);
             user.setAuthorities(Arrays.asList(userRole));
             userRepository.save(user);
+
         }
 }
