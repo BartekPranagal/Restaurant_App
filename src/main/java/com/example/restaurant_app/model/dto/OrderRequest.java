@@ -10,6 +10,6 @@ import java.util.List;
 public class OrderRequest {
     
     private OrderType orderType;
-    private List<PizzaEntity> orderedPizza;
+    private List<PizzaEntity> orderedPizza;// id pizzy i w serwisie je wyciągąć z repoPizzy z walidacją czy pizza znajduje sie w menu
 
 }

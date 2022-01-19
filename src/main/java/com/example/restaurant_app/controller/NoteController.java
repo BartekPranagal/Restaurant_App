@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -29,8 +30,9 @@ public class NoteController {
     }
 
     @PutMapping(path = "/comments/{noteId}")
-    public NoteResponse modifyNote(@PathVariable(name = "id") Long pizzaId,@PathVariable(name = "noteId") Long noteId,
-                                   @RequestBody NoteRequest noteRequest){
+    public NoteResponse modifyNote(@PathVariable(name = "id") Long pizzaId, @PathVariable(name = "noteId") Long noteId,
+                                   @RequestBody NoteRequest noteRequest, Principal principal){
+        principal.getName(); //tutaj laduje id (w naszym przypadku mail) uzytkownika zalogowanego
         return noteService.updateNote(pizzaId,noteId,noteRequest);
     }
 

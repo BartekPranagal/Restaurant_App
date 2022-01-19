@@ -59,7 +59,7 @@ public class UserEntity {
 //    List<OrderEntity> orderEntityList;
 
 
-    //lista/enum? authorities?
+//zerknac na dziedzieczenie w JPA
     //lista ocen/komentarzy?
     //lista zamowien?
 }
