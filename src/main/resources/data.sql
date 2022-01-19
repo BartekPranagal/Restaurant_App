@@ -19,4 +19,4 @@ insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,4);
 insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,5);
 insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,1);
 
-insert into USERS (ADRESS,FIRST_NAME,LAST_NAME,ACTIVE,LOGIN,EMAIL,PASSWORD) values ('Lubelska 27','Artur','Dolny',true,'trolololo666','abc@gmail.com','zaq12wsx');
+-- insert into USERS (ADRESS,FIRST_NAME,LAST_NAME,ACTIVE,LOGIN,EMAIL,PASSWORD) values ('Lubelska 27','Artur','Dolny',true,'trolololo666','abc@gmail.com','zaq12wsx');

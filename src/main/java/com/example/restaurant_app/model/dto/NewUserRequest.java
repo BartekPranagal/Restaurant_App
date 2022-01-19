@@ -14,10 +14,10 @@ public class NewUserRequest {
     private String password;
 
     @NotEmpty
-    private String first_name;
+    private String firstName;
 
     @NotEmpty
-    private String last_name;
+    private String lastName;
 
     @NotEmpty
     private  String username;
@@ -26,10 +26,13 @@ public class NewUserRequest {
     private String street;
 
     @NotEmpty
-    private Integer street_number;
+    private Integer streetNumber;
 
     @NotEmpty
-    private String postal_code;
+    private String postalCode;
+
+    @NotEmpty
+    private String city;
 
     @NotEmpty
     private Integer phoneNumber;
@@ -38,4 +41,3 @@ public class NewUserRequest {
 
 
 }
-// mail, haslo, nazwa uzytkownika, imie nazwisko, adres.

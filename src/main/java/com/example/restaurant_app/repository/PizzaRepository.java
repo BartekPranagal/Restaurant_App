@@ -13,4 +13,5 @@ public interface PizzaRepository  extends JpaRepository<PizzaEntity, Long> {
     @Query("select pizza from PizzaEntity pizza where" +
             " lower(pizza.name) like %:query% ") // zostawic dla front endu :)
     List<PizzaEntity> searchByQuery(String query);
+
 }

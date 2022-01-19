@@ -27,14 +27,26 @@ public class UserEntity {
     @Column(name = "email")
     private String mail;
 
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "user_name")
+    private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "postal_code")
+    private String postalCode;
+
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "street_number")
+    private Integer streetNumber;
+
+    @Column(name = "phone_number")
+    private Integer phoneNumber;
 
     @Column(name = "active")
     private boolean isActive;

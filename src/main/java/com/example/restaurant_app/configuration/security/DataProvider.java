@@ -28,11 +28,15 @@ public class DataProvider implements CommandLineRunner {
         public void run(String... args) throws Exception {
 
             AuthorityEntity userRole = new AuthorityEntity();
-            userRole.setName("ROLE_ADMIN");
+            userRole.setName("ROLE_USER");
             userRole = authorityRepository.save(userRole);
 
+            AuthorityEntity adminRole = new AuthorityEntity();
+            adminRole.setName("ROLE_ADMIN");
+            adminRole = authorityRepository.save(adminRole);
+
             UserEntity user = new UserEntity();
-            user.setNickname("Admin");
+            user.setUsername("Admin");
             user.setMail("Admin@gmail.com");
             user.setPassword(passwordEncoder.encode("Admin123"));
             user.setActive(true);

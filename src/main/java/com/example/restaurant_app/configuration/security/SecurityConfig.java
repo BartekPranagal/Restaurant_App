@@ -33,8 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .authorizeRequests()
+                .antMatchers("/api/register").permitAll()
                 .antMatchers("/api/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/h2-console/**", "/h2-console").hasAnyRole("ADMIN")
+                .antMatchers("/h2-console/**", "/h2-console").permitAll()
                 .and()
                 .headers().frameOptions().sameOrigin().and()
                 .formLogin().disable()
