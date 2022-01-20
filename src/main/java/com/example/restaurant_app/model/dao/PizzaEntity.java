@@ -35,4 +35,18 @@ public class PizzaEntity {
     @Column(name = "Vege")
     private  Boolean isVege;
 
+    public float getPriceBySize(String size){
+        float price= 0.0F;
+
+        if(size.toLowerCase().equals("small"))
+            price=getSmallPrice();
+        else if(size.toLowerCase().equals("medium"))
+            price=getMediumPrice();
+        else if (size.toLowerCase().equals("big"))
+            price=getBigPrice();
+        else
+            System.out.println("coś tu poszło nie tak");
+
+        return price;
+    }
 }

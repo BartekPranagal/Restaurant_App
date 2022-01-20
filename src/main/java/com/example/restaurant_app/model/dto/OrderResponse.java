@@ -13,5 +13,6 @@ public class OrderResponse {
     private Long id;
     private OrderType orderType;
     private List<PizzaEntity> orderList;
+    private float totalPrice;
 
 }

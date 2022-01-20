@@ -48,6 +48,7 @@ public class OrderService {
         orderRepository.deleteById(orderId);
         return orderId;
     }
+
     @Transactional
     public OrderResponse updateOrder(Long orderId, OrderRequest orderRequest){
 
@@ -57,7 +58,7 @@ public class OrderService {
         orderToChange.setOrderedPizza(orderRequest.getOrderedPizza());
 
         return orderConverter.toDto(orderToChange);
-
-
     }
+
+
 }

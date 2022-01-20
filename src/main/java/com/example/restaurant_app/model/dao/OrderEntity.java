@@ -25,4 +25,8 @@ public class OrderEntity {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "pizza_id"))
     private List<PizzaEntity> orderedPizza;
+
+    @Column(name = "price")
+    private float totalPrice;
+
 }
