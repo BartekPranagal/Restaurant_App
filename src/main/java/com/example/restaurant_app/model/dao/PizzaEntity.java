@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class PizzaEntity {
 
     @Id
-    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Long id;
 
     @Column(name = "Name")
@@ -20,19 +20,12 @@ public class PizzaEntity {
     @Column(name = "Description")
     private String description;
 
-    @Column(name = "small_price")
-    private Float smallPrice;
+    @Column(name = "Small_Price")
+    private Double smallPrice;
 
-    @Column(name = "medium_price")
-    private Float mediumPrice;
+    @Column(name = "Medium_Price")
+    private Double mediumPrice;
 
-    @Column(name = "big_price")
-    private Float bigPrice;
-
-    @Column(name = "Sale")
-    private Boolean isOnSale;
-
-    @Column(name = "Vege")
-    private  Boolean isVege;
-
+    @Column(name = "Big_Price")
+    private Double bigPrice;
 }

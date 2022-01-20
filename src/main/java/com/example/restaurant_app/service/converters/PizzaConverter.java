@@ -1,21 +1,20 @@
 package com.example.restaurant_app.service.converters;
 
 import com.example.restaurant_app.model.dao.PizzaEntity;
-import com.example.restaurant_app.model.dto.PizzaRequest;
-import com.example.restaurant_app.model.dto.PizzaResponse;
+import com.example.restaurant_app.model.dto.pizza.PizzaRequest;
+import com.example.restaurant_app.model.dto.pizza.PizzaResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PizzaConverter implements Convertable<PizzaRequest, PizzaEntity, PizzaResponse> {
-
     @Override
-    public PizzaEntity fromDto(PizzaRequest request) {
+    public PizzaEntity fromDto(PizzaRequest pizzaRequest) {
         PizzaEntity pizzaEntity = new PizzaEntity();
-        pizzaEntity.setName(request.getName());
-        pizzaEntity.setDescription(request.getDescription());
-        pizzaEntity.setSmallPrice(request.getSmallPrice());
-        pizzaEntity.setMediumPrice(request.getMediumPrice());
-        pizzaEntity.setBigPrice(request.getBigPrice());
+        pizzaEntity.setName(pizzaRequest.getName());
+        pizzaEntity.setDescription(pizzaRequest.getDescription());
+        pizzaEntity.setSmallPrice(pizzaRequest.getSmallPrice());
+        pizzaEntity.setMediumPrice(pizzaRequest.getMediumPrice());
+        pizzaEntity.setBigPrice(pizzaRequest.getBigPrice());
         return pizzaEntity;
     }
 

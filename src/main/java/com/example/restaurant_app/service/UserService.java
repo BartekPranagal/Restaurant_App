@@ -1,37 +1,67 @@
 package com.example.restaurant_app.service;
 
-import com.example.restaurant_app.model.dao.UserEntity;
-import com.example.restaurant_app.model.dto.NewUserRequest;
+import com.example.restaurant_app.model.dao.users.UserEntity;
+import com.example.restaurant_app.model.dto.user.UserRequest;
 import com.example.restaurant_app.repository.AuthorityRepository;
 import com.example.restaurant_app.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import javax.transaction.Transactional;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
-public class UserService {
-    private UserRepository userRepository;
-    private AuthorityRepository authorityRepository;
-    private PasswordEncoder passwordEncoder;
+@RequiredArgsConstructor
+@Transactional
+public class UserService implements UserDetailsService {
 
-    public UserService(UserRepository userRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.authorityRepository = authorityRepository;
-        this.passwordEncoder = passwordEncoder;
+    private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserEntity saveUser(UserRequest userRequest) {
+        UserEntity user = new UserEntity();
+        user.setUsername(userRequest.getUsername());
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        user.setPhoneNumber(userRequest.getPhoneNumber());
+        user.setMail(userRequest.getMail());
+        user.setName(userRequest.getName());
+        user.setSurname(userRequest.getSurname());
+        user.setStreet(userRequest.getStreet());
+        user.setStreetNumber(userRequest.getStreetNumber());
+        user.setCity(userRequest.getCity());
+        user.setPostalCode(userRequest.getPostalCode());
+        user.setActive(true);
+        user.setAuthorities(Arrays.asList(authorityRepository.findByName("ROLE_USER").orElseThrow(
+                () -> new RuntimeException()
+        )));
+        return userRepository.save(user);
     }
 
-    public void addUser(NewUserRequest newUserRequest){
-        UserEntity newUser = new UserEntity();
-        newUser.setMail(newUserRequest.getMail());
-        newUser.setPassword(passwordEncoder.encode(newUserRequest.getPassword()));
-        newUser.setActive(true);
-        newUser.setAuthorities(Collections.singletonList(authorityRepository.getById(1L)));
-        userRepository.save(newUser);
+    public List<UserEntity> getUsers() {
+        return userRepository.findAll();
     }
 
-    public void getUserByLogin(String userName) {
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        UserEntity user = userRepository.findByUsername(username).orElseThrow(() ->
+                new UsernameNotFoundException(username));
+
+
+        return User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .accountLocked(!user.isActive())
+                .authorities(user.getAuthorities()
+                        .stream().map(x -> x.getName())
+                        .toArray(String[]::new))
+                .build();
     }
-
 }

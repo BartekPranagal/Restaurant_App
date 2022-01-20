@@ -1,4 +1,4 @@
-package com.example.restaurant_app.model.dto;
+package com.example.restaurant_app.model.dto.pizza;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +10,7 @@ public class PizzaResponse {
     private Long id;
     private String name;
     private String description;
-    private Float smallPrice;
-    private Float mediumPrice;
-    private Float bigPrice;
+    private Double smallPrice;
+    private Double mediumPrice;
+    private Double bigPrice;
 }

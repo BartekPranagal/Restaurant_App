@@ -1,19 +1,18 @@
-package com.example.restaurant_app.model.dao;
-
+package com.example.restaurant_app.model.dao.users;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Data
 @Table(name = "authorities")
+@Data
 public class AuthorityEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
 
 }
