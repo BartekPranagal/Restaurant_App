@@ -31,8 +31,8 @@ public class UserConverter implements Convertable<NewUserRequest, UserEntity, Ne
         newUser.setUsername(newUserRequest.getUsername());
         newUser.setMail(newUserRequest.getMail());
         newUser.setLogin(newUserRequest.getUsername());
-        newUser.setFirstName(newUserRequest.getFirstName());
-        newUser.setLastName(newUserRequest.getLastName());
+        newUser.setFirstName(newUserRequest.getName());
+        newUser.setLastName(newUserRequest.getSurname());
         newUser.setPassword(passwordEncoder.encode(newUserRequest.getPassword()));
         newUser.setAuthorities(Collections.singletonList(authorityRepository
                 .findByName("ROLE_USER").orElseThrow(() -> new RuntimeException())));

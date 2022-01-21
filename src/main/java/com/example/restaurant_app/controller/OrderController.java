@@ -15,7 +15,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping(path = "/placement")
+    @PostMapping(path = "/add")
     public OrderResponse addNewOrder(@RequestBody OrderRequest orderRequest) {
         return  orderService.createOrder(orderRequest);
     }

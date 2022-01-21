@@ -16,7 +16,7 @@ public class PizzaController {
 
     private final PizzaService pizzaService;
 
-    @GetMapping(path = "/menu/all")
+    @GetMapping(path = "/menu")
     public List<PizzaResponse> getMenu(){
         return pizzaService.getMenu();
     }
@@ -26,10 +26,10 @@ public class PizzaController {
         return pizzaService.getById(pizzaId);
     }
 
-    @GetMapping(path = "/menu")
-    public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
-        return pizzaService.getPizzaByQuery(query);
-    }
+//    @GetMapping(path = "/menu")
+//    public List<PizzaResponse> getDynamicPizzaName(@RequestParam(required = false) String query){
+//        return pizzaService.getPizzaByQuery(query);
+//    }
 
     @DeleteMapping(path = "menu/{id}")
     public Long deletePizza(@PathVariable(name = "id") Long pizzaId){

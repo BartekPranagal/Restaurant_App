@@ -43,10 +43,10 @@ public class UserEntity {
     private String street;
 
     @Column(name = "street_number")
-    private Integer streetNumber;
+    private String streetNumber;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "active")
     private boolean isActive;

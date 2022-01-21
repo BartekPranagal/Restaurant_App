@@ -14,9 +14,9 @@ public class NewUserResponse {
     private String last_name;
     private String username;
     private String street;
-    private Integer street_number;
+    private String street_number;
     private String postal_code;
     private String city;
-    private Integer phoneNumber;
+    private String phoneNumber;
 
 }

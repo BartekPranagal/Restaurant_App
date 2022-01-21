@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.PermitAll;
+
 @RestController
 @RequiredArgsConstructor
 @Transactional
@@ -17,7 +19,8 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping(path = "/api/register")
+    @PermitAll
+    @PostMapping(path = "/api/addUser")
     public NewUserResponse createNewUser(@RequestBody NewUserRequest userRequest){
         return userService.addUser(userRequest);
     }
