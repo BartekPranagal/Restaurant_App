@@ -58,8 +58,12 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<OrderEntity> getOrderHistory(String name) {
+    public List<OrderEntity> getOrderHistoryFromUser(String name) {
         UserEntity user = userRepository.findByUsername(name).orElseThrow(RuntimeException::new);
         return orderRepository.findByUser(user).orElseThrow();
+    }
+
+    public List<OrderEntity> getOrderHistory() {
+        return orderRepository.findAll();
     }
 }

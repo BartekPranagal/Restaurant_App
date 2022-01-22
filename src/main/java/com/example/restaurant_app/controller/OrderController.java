@@ -24,8 +24,12 @@ public class OrderController {
     @Transactional
     @GetMapping(path = "/orders")
     public List<OrderEntity> getOrdersByUsername(Principal principal){
-        System.out.println(principal.getName());
-        return orderService.getOrderHistory(principal.getName());
+        return orderService.getOrderHistoryFromUser(principal.getName());
+    }
+
+    @GetMapping(path = "/allOrders")
+    public List<OrderEntity> getAllOrders(){
+        return orderService.getOrderHistory();
     }
 
 
