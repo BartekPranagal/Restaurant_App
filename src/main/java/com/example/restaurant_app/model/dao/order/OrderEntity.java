@@ -20,7 +20,7 @@ public class OrderEntity {
     private String surname;
     private String street;
     private String streetNumber;
-    private String City;
+    private String city;
     private String postalCode;
     private String phoneNumber;
     private Long price;
