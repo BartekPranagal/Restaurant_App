@@ -20,6 +20,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
 
+
     public OrderEntity saveOrder(OrderRequest orderRequest) {
 
         Long price = 0L;
@@ -52,8 +53,13 @@ public class OrderService {
         order.setPostalCode(user.getPostalCode());
         order.setPhoneNumber(user.getPhoneNumber());
         order.setPrice(price);
+        order.setUser(user);
 
         return orderRepository.save(order);
     }
 
+    public List<OrderEntity> getOrderHistory(String name) {
+        UserEntity user = userRepository.findByUsername(name).orElseThrow(RuntimeException::new);
+        return orderRepository.findByUser(user).orElseThrow();
+    }
 }

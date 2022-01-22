@@ -4,10 +4,11 @@ import com.example.restaurant_app.model.dao.order.OrderEntity;
 import com.example.restaurant_app.model.dto.order.OrderRequest;
 import com.example.restaurant_app.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,5 +21,13 @@ public class OrderController {
     public OrderEntity addOrder(@RequestBody OrderRequest order) {
         return orderService.saveOrder(order);
     }
+    @Transactional
+    @GetMapping(path = "/orders")
+    public List<OrderEntity> getOrdersByUsername(Principal principal){
+        System.out.println(principal.getName());
+        return orderService.getOrderHistory(principal.getName());
+    }
+
+
 
 }
