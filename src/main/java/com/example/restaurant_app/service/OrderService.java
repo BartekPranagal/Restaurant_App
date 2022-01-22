@@ -10,6 +10,7 @@ import com.example.restaurant_app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class OrderService {
 
     public OrderEntity saveOrder(OrderRequest orderRequest) {
 
-        Long price = 0L;
+        Double price = 0.0;
 
         UserEntity user = userRepository.findByUsername(orderRequest.getUsername())
                 .orElseThrow(() -> new RuntimeException());
@@ -31,6 +32,15 @@ public class OrderService {
         for (OrderedPizza el: orderRequest.getPizzaList()) {
             price += el.getPrice();
         }
+
+        if(LocalDate.now().getDayOfWeek().name().equalsIgnoreCase("Tuesday")) {
+            price*=0.8;
+        }
+
+        if(LocalDate.now().getDayOfWeek().name().equalsIgnoreCase("Thursday")) {
+            price*=0.9;
+        }
+
 
         List<OrderedPizzaEntity> orderedPizzas = orderRequest.getPizzaList().stream()
                 .map(x -> {

@@ -23,7 +23,7 @@ public class OrderEntity {
     private String city;
     private String postalCode;
     private String phoneNumber;
-    private Long price;
+    private Double price;
 
     @ManyToMany(cascade = CascadeType.ALL)
     List<OrderedPizzaEntity> orderedPizzas;
