@@ -6,5 +6,7 @@ import lombok.Getter;
 public class Item {
 
     Long id;
+    String name;
     String size;
+    Long price;
 }

@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface NoteRepository extends JpaRepository<NoteEntity,Long> {
 
 
-    List<NoteEntity> findAllByPizzaId(Long pizzaId);
+    Optional<List<NoteEntity>> findAllByPizzaId(Long pizzaId);
 
 }

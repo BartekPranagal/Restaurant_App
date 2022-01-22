@@ -14,26 +14,26 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/menu/{id}")
+@RequestMapping("/api")
 public class NoteController {
 
     private final NoteService noteService;
 
-    @GetMapping(path = "/comments")
+    @GetMapping(path = "/getPizzaRating/{id}")
     public List<NoteResponse> getNotesForPizza(@PathVariable(name = "id")Long pizzaId) {
         return noteService.getNotesForPizza(pizzaId);
     }
 
-    @PostMapping(path = "/comments")
-    public NoteResponse addNewComment(@PathVariable(name = "id")Long pizzaId, @RequestBody NoteRequest noteRequest ) {
-        return noteService.createNewComment(pizzaId,noteRequest);
+    @PostMapping(path = "/addRating")
+    public NoteResponse addNewComment(@RequestBody NoteRequest noteRequest, Principal principal) {
+        return noteService.createNewComment(noteRequest,principal.getName());
     }
 
     @PutMapping(path = "/comments/{noteId}")
-    public NoteResponse modifyNote(@PathVariable(name = "id") Long pizzaId, @PathVariable(name = "noteId") Long noteId,
+    public NoteResponse modifyNote(@PathVariable(name = "noteId") Long noteId,
                                    @RequestBody NoteRequest noteRequest, Principal principal){
         principal.getName(); //tutaj laduje id (w naszym przypadku mail) uzytkownika zalogowanego
-        return noteService.updateNote(pizzaId,noteId,noteRequest);
+        return noteService.updateNote(noteId,noteRequest);
     }
 
 }

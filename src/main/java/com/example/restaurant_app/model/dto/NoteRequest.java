@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class NoteRequest {
 
-    private String comment;
-    private Integer ratio;
-//    private PizzaEntity pizza;
-//    private UserEntity user;
+    private String content;
+    private Integer grade;
+    private Long pizzaId;
+    private String username;
 
 }

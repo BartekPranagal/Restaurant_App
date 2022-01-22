@@ -42,7 +42,7 @@ public class PizzaEntity {
             price=getSmallPrice();
         else if(size.toLowerCase().equals("medium"))
             price=getMediumPrice();
-        else if (size.toLowerCase().equals("big"))
+        else if (size.toLowerCase().equals("large"))
             price=getBigPrice();
         else
             System.out.println("coś tu poszło nie tak");

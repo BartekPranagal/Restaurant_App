@@ -12,5 +12,6 @@ public class NoteResponse {
     private Long id;
     private String comment;
     private Integer ratio;
+    private String username;
 
 }

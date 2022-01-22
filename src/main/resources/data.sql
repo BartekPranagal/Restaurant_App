@@ -7,16 +7,16 @@ INSERT into Pizza(NAME,DESCRIPTION,SMALL_PRICE,MEDIUM_PRICE,BIG_PRICE) VALUES ('
 INSERT into Pizza(NAME,DESCRIPTION,SMALL_PRICE,MEDIUM_PRICE,BIG_PRICE) VALUES ('Di Pesce','ciasto, sos pomidorowy, ser, krewetki tygrysie, papryczki chilli, czosnek, natka pietruszki',27.90,38.90,51.90);
 INSERT into Pizza(NAME,DESCRIPTION,SMALL_PRICE,MEDIUM_PRICE,BIG_PRICE) VALUES ('Nachos Pizza Hot','ciasto, sos pomidorowy, ser, salami pepperoni, papryczki jalapenos, nachosy ,oregano',28.90,41.90,59.90);
 
-insert into orders(ORDER_TYPE) values (1);
-insert into orders(ORDER_TYPE) values (1);
-insert into orders(ORDER_TYPE) values (0);
-
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,1);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,8);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,7);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,1);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,4);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,5);
-insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,1);
+-- insert into orders(ORDER_TYPE) values (1);
+-- insert into orders(ORDER_TYPE) values (1);
+-- insert into orders(ORDER_TYPE) values (0);
+--
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,1);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,8);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (1,7);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,1);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,4);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,5);
+-- insert into ORDER_PIZZA(ORDER_ID,PIZZA_ID) values (2,1);
 
 -- insert into USERS (ADRESS,FIRST_NAME,LAST_NAME,ACTIVE,LOGIN,EMAIL,PASSWORD) values ('Lubelska 27','Artur','Dolny',true,'trolololo666','abc@gmail.com','zaq12wsx');

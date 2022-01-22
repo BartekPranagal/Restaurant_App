@@ -18,12 +18,14 @@ public class OrderEntity {
     //user_id
 
     @Column(name = "orderType")
+    @Enumerated(EnumType.STRING)
     private OrderType orderType;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "order_pizza",
             joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "pizza_id"))
+            inverseJoinColumns =
+                @JoinColumn(name = "pizza_id"))
     private List<PizzaEntity> orderedPizza;
 
     @Column(name = "price")

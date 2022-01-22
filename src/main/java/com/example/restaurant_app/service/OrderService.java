@@ -55,7 +55,7 @@ public class OrderService {
         OrderEntity orderToChange = orderRepository.findById(orderId)
                 .orElseThrow(()->new RuntimeException());
         orderToChange.setOrderType(orderRequest.getOrderType());
-        orderToChange.setOrderedPizza(orderRequest.getOrderedPizza());
+        //orderToChange.setOrderedPizza(orderRequest.getOrderedPizza());
 
         return orderConverter.toDto(orderToChange);
     }

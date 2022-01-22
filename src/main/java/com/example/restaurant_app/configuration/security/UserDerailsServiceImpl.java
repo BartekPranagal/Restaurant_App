@@ -30,19 +30,19 @@ public class UserDerailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByNicknameOrMail(username).orElseThrow(() ->
+        UserEntity user = userRepository.findByUsername(username).orElseThrow(() ->
                 new UsernameNotFoundException(username));
 
-        String token = JWT.create()
-                .withSubject(user.getUsername() + user.getMail())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 3000))
-                .sign(Algorithm.HMAC256("secret"));
-        System.out.println(token);
-        try {
-            httpServletResponse.getOutputStream().print("{\"token\": \"" + token + "\"}");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String token = JWT.create()
+//                .withSubject(user.getUsername() + user.getMail())
+//                .withExpiresAt(new Date(System.currentTimeMillis() + 3000))
+//                .sign(Algorithm.HMAC256("secret"));
+//        System.out.println(token);
+//        try {
+//            httpServletResponse.getOutputStream().print("{\"token\": \"" + token + "\"}");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         return User.builder()
                 .username(user.getMail())
