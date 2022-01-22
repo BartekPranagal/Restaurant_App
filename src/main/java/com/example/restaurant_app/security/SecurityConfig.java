@@ -1,5 +1,6 @@
 package com.example.restaurant_app.security;
 
+import com.example.restaurant_app.repository.UserRepository;
 import com.example.restaurant_app.security.filter.CustomAuthenticationFilter;
 import com.example.restaurant_app.security.filter.CustomAuthorizationFilter;
 import com.example.restaurant_app.service.UserService;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -35,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .sessionManagement()
 //                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and()
-                .addFilter(new CustomAuthenticationFilter(authenticationManager()))
+                .addFilter(new CustomAuthenticationFilter(authenticationManager(),userRepository))
                 .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/api/menu", "/login", "api/addUser", "api/getPizzaRating/{id}").permitAll()
