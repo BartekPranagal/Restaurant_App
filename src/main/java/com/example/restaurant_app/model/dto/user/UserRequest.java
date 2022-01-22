@@ -13,6 +13,6 @@ public class UserRequest {
     private String surname;
     private String street;
     private String streetNumber;
-    private String City;
+    private String city;
     private String postalCode;
 }

@@ -1,5 +1,6 @@
 package com.example.restaurant_app.model.dao.users;
 
+import com.example.restaurant_app.model.dao.order.OrderEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,5 +27,8 @@ public class UserEntity {
     private boolean active;
 
     @ManyToMany
-    List<AuthorityEntity> authorities;
+    private List<AuthorityEntity> authorities;
+
+    @OneToMany
+    private List<OrderEntity> orderHistory;
 }

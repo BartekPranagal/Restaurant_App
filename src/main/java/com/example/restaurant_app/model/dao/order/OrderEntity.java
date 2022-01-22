@@ -1,5 +1,6 @@
 package com.example.restaurant_app.model.dao.order;
 
+import com.example.restaurant_app.model.dao.users.UserEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,4 +27,9 @@ public class OrderEntity {
 
     @ManyToMany(cascade = CascadeType.ALL)
     List<OrderedPizzaEntity> orderedPizzas;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
 }
