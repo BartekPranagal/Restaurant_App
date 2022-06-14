@@ -1,5 +1,6 @@
 package com.example.restaurant_app.model.dao.users;
 
+import com.example.restaurant_app.model.dao.Idenficable;
 import com.example.restaurant_app.model.dao.order.OrderEntity;
 import lombok.Data;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
-public class UserEntity {
+public class UserEntity implements Idenficable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +27,9 @@ public class UserEntity {
     private String postalCode;
     private boolean active;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<AuthorityEntity> authorities;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<OrderEntity> orderHistory;
 }

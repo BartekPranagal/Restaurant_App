@@ -6,6 +6,7 @@ import com.example.restaurant_app.model.dao.users.UserEntity;
 import com.example.restaurant_app.model.dto.order.OrderRequest;
 import com.example.restaurant_app.model.dto.order.OrderedPizza;
 import com.example.restaurant_app.repository.OrderRepository;
+import com.example.restaurant_app.repository.PizzaRepository;
 import com.example.restaurant_app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,9 +21,10 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final PizzaRepository pizzaRepository;
 
 
-    public OrderEntity saveOrder(OrderRequest orderRequest) {
+    public void saveOrder(OrderRequest orderRequest) {
 
         Double price = 0.0;
 
@@ -45,7 +47,7 @@ public class OrderService {
         List<OrderedPizzaEntity> orderedPizzas = orderRequest.getPizzaList().stream()
                 .map(x -> {
                     OrderedPizzaEntity orderedPizzaEntity = new OrderedPizzaEntity();
-                    orderedPizzaEntity.setPizzaId(x.getPizzaId());
+                    orderedPizzaEntity.setPizza(pizzaRepository.getById(x.getPizzaId()));
                     orderedPizzaEntity.setName(x.getName());
                     orderedPizzaEntity.setSize(x.getSize());
                     orderedPizzaEntity.setPrice(x.getPrice());
@@ -65,7 +67,7 @@ public class OrderService {
         order.setPrice(price);
         order.setUser(user);
 
-        return orderRepository.save(order);
+        orderRepository.save(order);
     }
 
     public List<OrderEntity> getOrderHistoryFromUser(String name) {

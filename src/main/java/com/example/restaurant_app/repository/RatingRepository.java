@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface RatingRepository extends JpaRepository<RatingEntity, Long> {
 
-    Optional<List<RatingEntity>> findByPizzaId(Long pizzaId);
+    List<RatingEntity> findByPizzaId(Long pizzaId);
 
 }

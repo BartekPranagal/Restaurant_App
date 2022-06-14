@@ -18,9 +18,10 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping(path = "/addOrder")
-    public OrderEntity addOrder(@RequestBody OrderRequest order) {
-        return orderService.saveOrder(order);
+    public void addOrder(@RequestBody OrderRequest order) {
+        orderService.saveOrder(order);
     }
+
     @Transactional
     @GetMapping(path = "/orders")
     public List<OrderEntity> getOrdersByUsername(Principal principal){

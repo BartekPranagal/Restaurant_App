@@ -1,15 +1,21 @@
 package com.example.restaurant_app.model.dao.order;
 
+import com.example.restaurant_app.model.dao.Idenficable;
 import com.example.restaurant_app.model.dao.users.UserEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
 @Data
-public class OrderEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderEntity implements Idenficable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +31,10 @@ public class OrderEntity {
     private String phoneNumber;
     private Double price;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     List<OrderedPizzaEntity> orderedPizzas;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 

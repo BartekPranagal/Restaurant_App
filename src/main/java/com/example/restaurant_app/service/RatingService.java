@@ -24,6 +24,6 @@ public class RatingService {
     }
 
     public List<RatingEntity> findRatingForPizza(Long pizzaId) {
-        return ratingRepository.findByPizzaId(pizzaId).orElseThrow(() -> new RuntimeException());
+        return ratingRepository.findByPizzaId(pizzaId);
     }
 }

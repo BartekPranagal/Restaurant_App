@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Pizza")
 @Data
-public class PizzaEntity {
+public class PizzaEntity implements Idenficable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

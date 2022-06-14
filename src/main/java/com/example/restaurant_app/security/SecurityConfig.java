@@ -42,8 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/menu", "/login", "api/addUser", "api/getPizzaRating/{id}").permitAll()
                 .antMatchers("/h2-console/**", "/h2-console").permitAll()
-                .antMatchers("/api/addOrder", "api/addRating", "api/orders").authenticated()
-                .antMatchers("/api/users","api/allOrders").hasAnyRole("ADMIN");
+                .antMatchers("/api/addOrder", "/api/addRating", "/api/orders").authenticated()
+                .antMatchers("/api/users","/api/allOrders", "/api/backup").hasAnyRole("ADMIN")
+                .anyRequest().authenticated();
     }
 
     @Bean
