@@ -1,0 +1,57 @@
+.move {
+  position: sticky;
+  transition: 0.2s linear;
+  top: 150px;
+  z-index: 10000;
+}
+.image {
+  display: flex;
+  max-width: 250px;
+  max-height: 250px;
+}
+.size {
+  width: 300px;
+  display: flex;
+}
+.mat-card {
+  display: flex;
+  border: 1px groove;
+  width: 25vw;
+  margin-left: 50px;
+}
+
+.mat-card2 {
+  display: flex;
+  border: 1px groove;
+  width: 25vw;
+  min-height: 250px;
+  margin-left: 50px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-card3 {
+  display: flex;
+  flex-direction: column;
+  border: 1px groove;
+  width: 25vw;
+  margin-left: 50px;
+}
+.text {
+  margin-top: 8px;
+  font-size: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  border-right: 2px groove;
+}
+.button {
+  margin-top: 2px;
+  font-size: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+

@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+  <img mat-card-image class="image" src="/assets/img/margherita.png">
+  <mat-card-content style="display: flex; flex-direction: column">
+    <mat-card-title class="margin-info">{{pizza.id}}.{{pizza.name}}</mat-card-title>
+    <mat-card-content style="width: 250px">{{pizza.description}}</mat-card-content>
+  </mat-card-content>
+  <mat-card-content class="price">
+    <button mat-button class="rate" [routerLink]="['rating/',pizza.id]">Sprawdz Oceny!</button>
+    <mat-card-content class="padding">
+      <p class="text">Mała 32cm</p>
+      <p class="text">{{pizza.smallPrice}} zł</p>
+      <button mat-button *ngIf="isLoggedIn()" (click)="addOrderSmall()">Zamów</button>
+    </mat-card-content>
+    <mat-card-content class="padding">
+      <p class="text">Średnia 45cm</p>
+      <p class="text">{{pizza.mediumPrice}} zł</p>
+      <button mat-button *ngIf="isLoggedIn()" (click)="addOrderMedium()">Zamów</button>
+      <p class="text" *ngIf="!isLoggedIn()">Aby Zamówić pizze zaloguj się</p>
+    </mat-card-content>
+    <mat-card-content class="padding">
+      <p class="text">Duża 60cm</p>
+      <p class="text">{{pizza.bigPrice}} zł</p>
+      <button mat-button *ngIf="isLoggedIn()" (click)="addOrderLarge()">Zamów</button>
+    </mat-card-content>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,98 @@
+<mat-list style="margin-left: 10%; margin-right: 10%; margin-bottom: 50px;">
+  <div mat-subheader>Użytkownicy:</div>
+  <mat-list-item style="display: flex" *ngFor="let user of users">
+    <mat-icon mat-list-icon>account_circle</mat-icon>
+    <div style="margin-right: 20px;">
+      <div mat-line>Nazwa użytkownika:</div>
+      <div mat-line>{{user.username}}</div>
+    </div>
+    <div style="margin-right: 20px;">
+      <div mat-line>Imię i nazwisko:</div>
+      <div mat-line>{{user.name}} {{user.surname}}</div>
+    </div>
+    <div style="margin-right: 20px;">
+      <div mat-line>Adres:</div>
+      <div mat-line>{{user.street}} {{user.streetNumber}} {{user.city}} {{user.postalCode}}</div>
+    </div>
+    <div style="margin-right: 20px;">
+      <div mat-line>Numer telefonu:</div>
+      <div mat-line>{{user.phoneNumber}}</div>
+    </div>
+    <div style="margin-right: 20px;">
+      <div mat-line>E-mail:</div>
+      <div mat-line>{{user.mail}}</div>
+    </div>
+    <div style="margin-right: 20px;">
+      <div mat-line>Aktywny:</div>
+      <div mat-line>{{user.active}}</div>
+    </div>
+    <button mat-raised-button style="width: 150px; max-height: 50px;"
+            (click)="setId(user.id)" [routerLink]="['/edit']" color="primary">
+      Edytuj
+    </button>
+  </mat-list-item>
+
+  <mat-list>
+    <div mat-subheader>Export / Import</div>
+    <mat-list-item>
+      <div style="margin-right: 20px;">
+        <button (click)="downloadDatabaseContent('json')" mat-raised-button color="primary">Pobierz zawartość bazy danych w formacie json</button>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+      <div style="margin-right: 20px;">
+        <button (click)="downloadDatabaseContent('xml')" mat-raised-button color="primary">Pobierz zawartość bazy danych w formacie xml</button>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+      <div class="text-center">
+        <input class="form-control" type="file"
+               (change)="onChange($event)">
+      </div>
+      <div style="margin-right: 20px;">
+        <button (click)="onUpload()" mat-raised-button color="primary">Przywróć bazę danych z pliku xml/json</button>
+      </div>
+      <div class="container" *ngIf="loading">
+        <h3>Loading ...</h3>
+      </div>
+      <div class="success" *ngIf="success">
+        <h3>Przywrócenie zakończone sukcesem</h3>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <div style="display:flex; justify-content:space-between; margin-right: 10%; margin-bottom: 20px; margin-top: 100px">
+    <mat-list style="margin-right: 10%; margin-bottom: 50px;">
+      <div mat-subheader>Zamówienia:</div>
+      <mat-list-item style="display: flex" *ngFor="let order of orders">
+        <mat-icon mat-list-icon>local_pizza</mat-icon>
+        <div style="margin-right: 20px;">
+          <div mat-line>Imię i nazwisko:</div>
+          <div mat-line>{{order.name}} {{order.surname}}</div>
+        </div>
+        <div style="margin-right: 20px;">
+          <div mat-line>Adres:</div>
+          <div mat-line>{{order.street}} {{order.streetNumber}} {{order.city}} {{order.postalCode}}</div>
+        </div>
+        <div style="margin-right: 20px;">
+          <div mat-line>Numer telefonu:</div>
+          <div mat-line>{{order.phoneNumber}}</div>
+        </div>
+        <div style="margin-right: 20px;">
+          <div mat-line>Typ:</div>
+          <div mat-line>{{order.deliveryType}}</div>
+        </div>
+        <div style="margin-right: 20px;">
+          <div mat-line>Cena:</div>
+          <div mat-line>{{order.price}}</div>
+        </div>
+        <div style="margin-right: 20px;">
+          <div mat-line>Zamówione pizze:</div>
+          <div mat-line *ngFor="let pizzaOrder of order.orderedPizzas">
+            {{pizzaOrder.name}} {{pizzaOrder.size}}</div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</mat-list>

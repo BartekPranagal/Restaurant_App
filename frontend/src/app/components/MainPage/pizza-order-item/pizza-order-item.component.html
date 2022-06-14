@@ -1,0 +1,11 @@
+<mat-card class="example-card">
+  <mat-card-content>
+  <mat-card-title >{{pizzaOrder.name}}</mat-card-title>
+  <mat-card-subtitle>{{pizzaOrder.size}} {{pizzaOrder.price}}</mat-card-subtitle>
+  </mat-card-content>
+  <mat-card-content>
+  <button matSuffix mat-icon-button (click)="deleteOrder()">
+    <mat-icon>close</mat-icon>
+  </button>
+  </mat-card-content>
+</mat-card>

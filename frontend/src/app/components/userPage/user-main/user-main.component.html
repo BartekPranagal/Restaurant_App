@@ -1,0 +1,36 @@
+<div style="display:flex; justify-content:space-between; margin-right: 10%; margin-bottom: 20px; margin-top: 20px">
+  <mat-list style="margin-left: 10%; margin-right: 10%; margin-bottom: 50px;">
+    <div mat-subheader>Użytkownicy:</div>
+    <mat-list-item style="display: flex" *ngFor="let order of orders">
+      <mat-icon mat-list-icon>local_pizza</mat-icon>
+      <div style="margin-right: 20px;">
+        <div mat-line>Imię i nazwisko:</div>
+        <div mat-line>{{order.name}} {{order.surname}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Adres:</div>
+        <div mat-line>{{order.street}} {{order.streetNumber}} {{order.city}} {{order.postalCode}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Numer telefonu:</div>
+        <div mat-line>{{order.phoneNumber}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Typ:</div>
+        <div mat-line>{{order.deliveryType}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Cena: </div>
+        <div mat-line>{{order.price}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Zamówione pizze: </div>
+        <div mat-line *ngFor="let order of order.orderedPizzas">
+          {{order.name}} {{order.size}}</div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+<button mat-raised-button style="width: 150px; max-height: 50px;"
+        (click)="setId()" [routerLink]="['/edit']" color="primary">
+  Zmien swoje dane</button>
+</div>

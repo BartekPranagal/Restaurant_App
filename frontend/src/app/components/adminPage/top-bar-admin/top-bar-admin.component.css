@@ -1,0 +1,22 @@
+.margin-left {
+  margin-left: 20%;
+}
+.margin-right {
+  margin-right: 20%;
+  padding-top: 5px;
+}
+.example-card {
+  border-bottom: 1px solid gray;
+}
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10001;
+  padding-bottom: 32px;
+}
+

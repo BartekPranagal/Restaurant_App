@@ -1,0 +1,40 @@
+<mat-card class="fixed">
+  <mat-card-subtitle class="margin-left">
+    <button mat-button class="subtitle2" (click)="goToPlusScroll('home')"><mat-icon>home</mat-icon></button>
+    <button mat-button class="subtitle2" (click)="goToPlusScroll('menu')">Menu</button>
+    <button mat-button class="subtitle2" (click)="goToPlusScroll('promo')">Promocje</button>
+    <button mat-button class="subtitle2" (click)="goTo('info')">Informacje</button>
+  </mat-card-subtitle>
+  <mat-card-subtitle *ngIf="!isLoggedIn()" class="margin-right">
+    <button mat-button class="subtitle2" [routerLink]="['/login']" >Logowanie/Rejestracja</button>
+  </mat-card-subtitle>
+  <mat-card-subtitle *ngIf="isLoggedIn()" class="margin-right">
+    <button *ngIf="user()" mat-button class="subtitle2" [routerLink]="['/user']" >Mój Profil</button>
+    <button *ngIf="admin()" mat-button class="subtitle2" [routerLink]="['/admin']" >Mój Profil</button>
+  </mat-card-subtitle>
+</mat-card>
+<mat-card id="home" class="example-card">
+  <img mat-card-image src="../../../../assets/img/PizzeriaWloskaRobotaTop.png">
+    <p class="title">Włoska Robota Pizzeria</p>
+    <p class="subtitle">
+      <mat-icon class="icon">place</mat-icon>
+      Warszawa, ul. Krakowska 12b
+    </p>
+  <p class="subtitle">
+    <mat-icon class="icon">phone</mat-icon>
+    885 667 986
+  </p>
+</mat-card>
+<mat-card class="example-card2">
+  <mat-card-content class="margin-left">
+    <p class="subtitle2">
+      Minimalna kwota zamówienia: 30zł
+    </p>
+    <p class="subtitle2">
+      Dowóz na terenie miasta: 0zł
+    </p>
+  </mat-card-content>
+</mat-card>
+
+
+

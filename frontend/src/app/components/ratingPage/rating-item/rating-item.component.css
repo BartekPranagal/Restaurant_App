@@ -1,0 +1,16 @@
+.example-card {
+  border-bottom: 1px solid gray;
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: center;
+}
+.image {
+  width: 120px;
+  height: 120px;
+  padding-right: 30px;
+}
+.margin-info {
+  white-space: nowrap;
+}

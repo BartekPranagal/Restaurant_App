@@ -1,0 +1,44 @@
+.title {
+  margin-left: 20%;
+  margin-bottom: 15px;
+  font-weight: 900;
+  font-size: 30px;
+}
+.subtitle {
+  margin-left: 20%;
+  font-size: 15px;
+}
+.margin-left {
+  margin-left: 20%;
+}
+.margin-right {
+  margin-right: 20%;
+  padding-top: 5px;
+}
+.subtitle2 {
+  font-size: 15px;
+  padding-right: 30px;
+}
+.icon {
+  font-size: 20px;
+}
+.example-card {
+  border-bottom: 1px solid gray;
+}
+.example-card2 {
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10001;
+}
+

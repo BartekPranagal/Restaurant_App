@@ -1,0 +1,16 @@
+.example-card {
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.subtitle {
+  font-size: 15px;
+}
+.text {
+  margin-left: 20px;
+  padding-bottom: 10px;
+}
+.text2 {
+  margin-right: 40px;
+  padding-bottom: 10px;
+}

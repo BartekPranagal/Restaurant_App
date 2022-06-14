@@ -1,0 +1,28 @@
+<div class="move" *ngIf="isLoggedIn()">
+<mat-card class="mat-card">
+  <mat-card-title>Koszyk</mat-card-title>
+</mat-card>
+  <div style="overflow-y:auto;
+    max-height:350px;">
+<mat-card class="mat-card2" *ngIf="orders.length == 0">
+  <img mat-card-image class="image" src="../../../../assets/img/shopping-cart.png">
+</mat-card>
+  <mat-card class="mat-card2" *ngIf="orders.length > 0">
+                    <app-pizza-order-item style="margin-bottom: 5px; width: 95%" *ngFor="let pizzaOrder of orders"
+                                          [pizzaOrder]="pizzaOrder"> </app-pizza-order-item>
+  </mat-card>
+  </div>
+  <mat-card class="mat-card3">
+    <mat-button-toggle-group  style="border: 0; display: flex">
+      <mat-button-toggle (change)="changeOrderType('DELIVERY')" class="size">Dostawa</mat-button-toggle>
+      <mat-button-toggle (change)="changeOrderType('TAKEAWAY')" class="size">Odbiór Osobisty</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card>
+  <mat-card class="mat-card3">
+    <mat-card-content style="border: 0; display: flex">
+      <mat-card-content class="text">Suma: {{checkPrice()}} zł.</mat-card-content>
+      <button mat-button class="button" (click)="endOrder()">Zakończ zamówienie</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
