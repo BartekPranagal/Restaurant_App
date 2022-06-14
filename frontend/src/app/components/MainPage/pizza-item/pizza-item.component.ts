@@ -16,6 +16,9 @@ export class PizzaItemComponent implements OnInit {
   @Input()
   public pizza!: Pizza;
 
+  @Input()
+  public menuOrder: number;
+
   constructor(private pizzaOrderService: PizzaOrderService, private loginService: LoginService) { }
 
   ngOnInit(): void {

@@ -6,8 +6,8 @@
   </button>
 </mat-form-field>
 <app-pizza-item id="menu" class="size"
-  *ngFor="let pizza of menu"
-  [pizza]="pizza"
+  *ngFor="let pizza of menu; let i = index"
+  [pizza]="pizza" [menuOrder]="i+1"
 >
 </app-pizza-item>
 <app-promo style="margin-top: 20px;"></app-promo>
