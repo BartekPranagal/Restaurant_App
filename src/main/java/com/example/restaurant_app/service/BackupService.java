@@ -81,18 +81,15 @@ public class BackupService {
     }
 
     class MigrationElement <ELEMENT extends Idenficable> {
-        Map<Long, ELEMENT> oldIds = new HashMap<>();
-        Map<ELEMENT, Long> newIds = new HashMap<>();
+        Map<Long, Long> newIds = new HashMap<>();
 
         Long getNewId(Long oldId){
-            ELEMENT element = oldIds.get(oldId);
-            return newIds.get(element);
+            return newIds.get(oldId);
         }
 
         void saveElement(ELEMENT element, JpaRepository<ELEMENT, Long> repository){
             ELEMENT newElement = repository.save(element);
-            oldIds.put(element.getId(), newElement);
-            newIds.put(newElement, newElement.getId());
+            newIds.put(element.getId(), newElement.getId());
         }
     }
 }

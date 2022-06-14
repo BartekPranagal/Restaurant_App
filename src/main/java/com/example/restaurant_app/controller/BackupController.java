@@ -24,7 +24,6 @@ public class BackupController {
 
     private final BackupService backupService;
 
-    @ResponseBody
     @GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<Resource> getBackupFile(@RequestParam String format) throws JsonProcessingException {
         ObjectMapper mapper = null;
@@ -43,8 +42,6 @@ public class BackupController {
 
     @PostMapping
     public void handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
-        System.out.println(file);
-        System.out.println(file.getContentType());
         ObjectMapper mapper = new XmlMapper();
         if(file.getContentType().equals("application/json")){
             mapper = new ObjectMapper();
