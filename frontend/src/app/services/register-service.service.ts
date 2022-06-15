@@ -13,9 +13,9 @@ const HTTP_OPTIONS = {
 })
 export class RegisterServiceService {
 
-  private url = 'http://localhost:8080/api/addUser'
+  private url = 'http://localhost:8080/api/users';
 
-  constructor(private httpClient: HttpClient, private router: Router,) {
+  constructor(private httpClient: HttpClient, private router: Router) {
 
   }
 
