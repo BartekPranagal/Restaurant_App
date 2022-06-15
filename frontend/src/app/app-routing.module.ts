@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'rating/:id', component: RatingPageComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'admin', component: AdminPageComponent},
-  {path: 'edit', component: EditPageComponent},
+  {path: 'edit/:id', component: EditPageComponent},
   {path: 'user', component: UserPageComponent}
 ];
 

@@ -26,8 +26,7 @@
       <div mat-line>Aktywny:</div>
       <div mat-line>{{user.active}}</div>
     </div>
-    <button mat-raised-button style="width: 150px; max-height: 50px;"
-            (click)="setId(user.id)" [routerLink]="['/edit']" color="primary">
+    <button mat-raised-button style="width: 150px; max-height: 50px;" [routerLink]="['/edit/'+user.id]" color="primary">
       Edytuj
     </button>
   </mat-list-item>

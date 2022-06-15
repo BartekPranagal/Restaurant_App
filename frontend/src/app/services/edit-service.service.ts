@@ -1,30 +1,27 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-
-const HTTP_OPTIONS = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-}
+import {LoginService} from "./login.service";
+import {User} from "../models/User";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditServiceService {
 
-  private url = 'http://localhost:8080/api/editUser/'
-  private _id = 0;
+  private url = 'http://localhost:8080/api/users';
 
-  constructor(private httpClient: HttpClient, private router: Router,) { }
+  constructor(private httpClient: HttpClient,
+              private router: Router,
+              private loginService: LoginService) {
+  }
 
-  edit(username: String, password: String, phoneNumber: String, mail: String, name: String,
-           surname: String, street: String, streetNumber: String, city: String, postalCode: String): void {
+  edit(userId, username: String, password: String, phoneNumber: String, mail: String, name: String,
+       surname: String, street: String, streetNumber: String, city: String, postalCode: String): void {
+    let editUserUrl = this.url + "/" + userId;
 
-
-    this.url = 'http://localhost:8080/api/editUser/' + this._id;
-
-    this.httpClient.put(this.url, {
+    this.httpClient.put(editUserUrl, {
       "username": username,
       "password": password,
       "phoneNumber": phoneNumber,
@@ -35,13 +32,35 @@ export class EditServiceService {
       "streetNumber": streetNumber,
       "city": city,
       "postalCode": postalCode
-    } , HTTP_OPTIONS).subscribe(resp => {
-      this.router.navigate([''])
+    }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.loginService.token
+      })
+    })
+      .subscribe(resp => {
+        this.router.navigate([''])
+      });
+  }
+
+  currentUser(): Observable<User> {
+    return this.httpClient.get<User>(this.url + '/currentUser', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.loginService.token
+      })
     });
   }
 
+  delete(userId: any): void {
+    this.httpClient.delete<void>(this.url + "/" + userId, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.loginService.token
+      })
+    }).subscribe(resp => {
+      this.router.navigate([''])
+    });
 
-  set id(value: number) {
-    this._id = value;
   }
 }

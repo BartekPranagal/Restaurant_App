@@ -57,7 +57,6 @@ public class UserService implements UserDetailsService {
         UserEntity user = userRepository.findByUsername(username).orElseThrow(() ->
                 new UsernameNotFoundException(username));
 
-
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
@@ -69,7 +68,11 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public UserResponse updateUser(Long id, UserRequest request){
+    public UserResponse updateUser(String callerName, Long id, UserRequest request){
+        userRepository.findByUsername(callerName)
+                .filter(x -> isOwner(id, x) || isAdmin(x))
+                .orElseThrow();
+
         UserEntity existingEntity = userRepository.findById(id).orElseThrow();
         existingEntity.setName(request.getName().isEmpty()? existingEntity.getName() : request.getName());
         existingEntity.setSurname(request.getSurname().isEmpty()? existingEntity.getSurname() : request.getSurname());
@@ -81,5 +84,21 @@ public class UserService implements UserDetailsService {
         existingEntity.setStreet(request.getStreet().isEmpty()? existingEntity.getStreet() : request.getStreet());
         existingEntity.setStreetNumber(request.getStreetNumber().isEmpty()? existingEntity.getStreetNumber() : request.getStreetNumber());
         return userConverter.convertUserEntityToDto(existingEntity);
+    }
+
+    private boolean isAdmin(UserEntity x) {
+        return x.getAuthorities().stream().anyMatch(auth -> auth.getName().equals("ROLE_ADMIN"));
+    }
+
+    private boolean isOwner(Long id, UserEntity x) {
+        return x.getId().equals(id);
+    }
+
+    public UserEntity getUser(String name) {
+        return userRepository.findByUsername(name).orElseThrow();
+    }
+
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Rating} from "../../../models/Rating";
 import {RatingService} from "../../../services/rating.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-rating-list',
@@ -10,12 +11,17 @@ import {RatingService} from "../../../services/rating.service";
 export class RatingListComponent implements OnInit {
 
   ratings: Rating[] = [];
+  pizzaId: number;
 
-  constructor(private ratingService: RatingService) {
-    this.ratingService.getRatings().subscribe(data => this.ratings = data);
+  constructor(private ratingService: RatingService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.pizzaId = this.route.snapshot.params['id'];
+    this.route.params.subscribe(params => {
+      this.pizzaId = params['id'];
+    });
+    this.ratingService.getRatings(this.pizzaId).subscribe(data => this.ratings = data);
   }
 
 }

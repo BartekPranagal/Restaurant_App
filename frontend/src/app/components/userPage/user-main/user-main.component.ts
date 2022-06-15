@@ -24,8 +24,4 @@ export class UserMainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setId(): void {
-    this.editService.id = this.loginService.userId
-  }
-
 }

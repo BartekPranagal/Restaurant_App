@@ -10,17 +10,17 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/pizzas/{id}/ratings")
 public class RatingController {
 
     private final RatingService ratingService;
 
-    @GetMapping(path = "/getPizzaRating/{id}")
+    @GetMapping
     public List<RatingEntity> getPizzaRatingById(@PathVariable(name = "id") Long id) {
         return ratingService.findRatingForPizza(id);
     }
 
-    @PostMapping(path = "/addRating")
+    @PostMapping
     public RatingEntity addOrder(@RequestBody RatingRequest ratingRequest) {
         return ratingService.addRating(ratingRequest);
     }

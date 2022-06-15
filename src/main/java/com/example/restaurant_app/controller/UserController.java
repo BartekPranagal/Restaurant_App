@@ -5,32 +5,40 @@ import com.example.restaurant_app.model.dto.user.UserRequest;
 import com.example.restaurant_app.model.dto.user.UserResponse;
 import com.example.restaurant_app.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping
     public List<UserEntity> getUsers() {
         return userService.getUsers();
     }
 
-    @PostMapping("/addUser")
+    @PostMapping
     public UserEntity saveUser(@RequestBody UserRequest user) {
         return userService.saveUser(user);
     }
 
-    @RequestMapping(path = "editUser/{userId}", method = RequestMethod.PUT)
-        public UserResponse updateUser(@RequestBody UserRequest request, @PathVariable Long userId){
-        return userService.updateUser(userId, request);
+    @PutMapping(path = "/{userId}")
+    public UserResponse updateUser(@RequestBody UserRequest request, @PathVariable Long userId, Principal principal) {
+        return userService.updateUser(principal.getName(), userId, request);
+    }
 
+    @GetMapping("/current")
+    public UserEntity currentUser(Principal principal) {
+        return userService.getUser(principal.getName());
+    }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
     }
 }

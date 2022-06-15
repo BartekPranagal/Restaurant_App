@@ -26,13 +26,9 @@ public class BackupController {
 
     @GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<Resource> getBackupFile(@RequestParam String format) throws JsonProcessingException {
-        ObjectMapper mapper = null;
+
         Backup backup = backupService.getFullBackup();
-        if(format.equals("xml")) {
-            mapper =  new XmlMapper();
-        } else {
-            mapper = new ObjectMapper();
-        }
+        ObjectMapper mapper = getMapper(format);
 
         return ResponseEntity.status(200)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
@@ -50,4 +46,11 @@ public class BackupController {
         backupService.uploadBackup(backup);
     }
 
+    private ObjectMapper getMapper(String format) {
+        if(format.equals("xml")) {
+            return new XmlMapper();
+        } else {
+            return new ObjectMapper();
+        }
+    }
 }

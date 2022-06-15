@@ -10,7 +10,7 @@ import {LoginService} from "./login.service";
 })
 export class BackupService {
 
-  private downloadUrl = 'http://localhost:8080/api/backup?format='
+  private downloadUrl = 'http://localhost:8080/api/backup?format=';
   private uploadUrl = 'http://localhost:8080/api/backup';
 
   constructor(private httpClient: HttpClient,

@@ -22,10 +22,9 @@ export class AdminMainComponent implements OnInit {
   constructor(private loginService: LoginService, private editService: EditServiceService,
               private orderService: OrdersService, private backupService: BackupService) {
 
-    loginService.users().subscribe(data => this.users = data)
+    loginService.users().subscribe(data => this.users = data);
     orderService.allOrders().subscribe(data => {
-      this.orders = data
-      console.log(data)
+      this.orders = data;
     })
   }
 
@@ -35,10 +34,6 @@ export class AdminMainComponent implements OnInit {
   onChange(event) {
     this.file = event.target.files[0];
     this.success = false;
-  }
-
-  setId(x: number): void {
-    this.editService.id = x;
   }
 
   downloadDatabaseContent(fileFormat: string) {

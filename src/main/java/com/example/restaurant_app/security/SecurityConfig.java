@@ -7,6 +7,7 @@ import com.example.restaurant_app.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,11 +41,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new CustomAuthenticationFilter(authenticationManager(),userRepository))
                 .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/menu", "/login", "api/addUser", "api/getPizzaRating/{id}").permitAll()
+                .antMatchers("/api/menu", "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/pizzas/**").permitAll()
                 .antMatchers("/h2-console/**", "/h2-console").permitAll()
-                .antMatchers("/api/addOrder", "/api/addRating", "/api/orders").authenticated()
-                .antMatchers("/api/users","/api/allOrders", "/api/backup").hasAnyRole("ADMIN")
-                .anyRequest().authenticated();
+                .antMatchers("/api/orders", "/api/pizza-ratings/**", "/api/orders").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/users/current").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/users/*").authenticated()
+                .antMatchers("/api/users*/**","/api/allOrders", "/api/backup").hasAnyRole("ADMIN")
+                .anyRequest().denyAll();
     }
 
     @Bean

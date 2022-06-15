@@ -12,23 +12,23 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/orders")
 public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping(path = "/addOrder")
+    @PostMapping
     public void addOrder(@RequestBody OrderRequest order) {
         orderService.saveOrder(order);
     }
 
     @Transactional
-    @GetMapping(path = "/orders")
+    @GetMapping(path = "/history")
     public List<OrderEntity> getOrdersByUsername(Principal principal){
         return orderService.getOrderHistoryFromUser(principal.getName());
     }
 
-    @GetMapping(path = "/allOrders")
+    @GetMapping
     public List<OrderEntity> getAllOrders(){
         return orderService.getOrderHistory();
     }

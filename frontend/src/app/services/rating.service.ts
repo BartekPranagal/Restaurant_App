@@ -9,34 +9,30 @@ const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
   })
-}
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class RatingService {
 
-  private pizzaId = 0;
   private _grade = 0;
   private _content: String = '';
 
-  private ratingGetUrl = 'http://localhost:8080/api/getPizzaRating'
-  private ratingPostUrl = 'http://localhost:8080/api/addRating'
+  private url = 'http://localhost:8080/api/pizza-ratings';
 
   constructor(private httpClient: HttpClient, @Inject(DOCUMENT)private document: Document,
               private loginService: LoginService) {
   }
 
-  public getRatings(): Observable<Rating[]> {
-    let url = this.document.location.href
-    this.pizzaId = Number(url.substring(29))
-    this.ratingGetUrl = 'http://localhost:8080/api/getPizzaRating/' + this.pizzaId
-    return this.httpClient.get<Rating[]>(`${this.ratingGetUrl}`, HTTP_OPTIONS)
+  public getRatings(pizzaId: number): Observable<Rating[]> {
+    let ratingsUrl = 'http://localhost:8080/api/pizzas/' + pizzaId + '/ratings';
+    return this.httpClient.get<Rating[]>(ratingsUrl, HTTP_OPTIONS)
   }
 
-  sendRating(): void {
-    this.httpClient.post(this.ratingPostUrl,{
-      "pizzaId": this.pizzaId,
+  sendRating(pizzaId): void {
+    this.httpClient.post(this.url,{
+      "pizzaId": pizzaId,
       "grade": this._grade,
       "content": this._content,
       "user": this.loginService.username

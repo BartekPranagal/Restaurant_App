@@ -8,7 +8,7 @@ import {LoginService} from "./login.service";
 })
 export class PizzaOrderService {
 
-  private url = 'http://localhost:8080/api/addOrder'
+  private url = 'http://localhost:8080/api/orders';
 
   orders: PizzaOrder[] = [];
   orderType: string = '';

@@ -9,9 +9,7 @@ import {Order} from "../models/Order";
 })
 export class OrdersService {
 
-  private url = 'http://localhost:8080/api/orders'
-
-  private urlAll = 'http://localhost:8080/api/allOrders'
+  private url = 'http://localhost:8080/api/orders';
 
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
@@ -27,7 +25,7 @@ export class OrdersService {
 
   allOrders(): Observable<Order[]> {
 
-    return this.httpClient.get<Order[]>(this.urlAll, {
+    return this.httpClient.get<Order[]>(this.url, {
       headers : new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.loginService.token
