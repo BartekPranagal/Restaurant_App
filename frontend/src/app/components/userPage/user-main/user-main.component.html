@@ -1,6 +1,37 @@
 <div style="display:flex; justify-content:space-between; margin-right: 10%; margin-bottom: 20px; margin-top: 20px">
   <mat-list style="margin-left: 10%; margin-right: 10%; margin-bottom: 50px;">
-    <div mat-subheader>Użytkownicy:</div>
+    <div mat-subheader>Użytkownik:</div>
+    <mat-list-item style="display: flex" >
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <div style="margin-right: 20px;">
+        <div mat-line>Nazwa użytkownika:</div>
+        <div mat-line>{{user.username}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Imię i nazwisko:</div>
+        <div mat-line>{{user.name}} {{user.surname}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Adres:</div>
+        <div mat-line>{{user.street}} {{user.streetNumber}} {{user.city}} {{user.postalCode}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Numer telefonu:</div>
+        <div mat-line>{{user.phoneNumber}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>E-mail:</div>
+        <div mat-line>{{user.mail}}</div>
+      </div>
+      <div style="margin-right: 20px;">
+        <div mat-line>Aktywny:</div>
+        <div mat-line>{{user.active}}</div>
+      </div>
+      <button mat-raised-button style="width: 150px; max-height: 50px;" [routerLink]="['/edit/'+user.id]" color="primary">
+        Edytuj
+      </button>
+    </mat-list-item>
+
     <mat-list-item style="display: flex" *ngFor="let order of orders">
       <mat-icon mat-list-icon>local_pizza</mat-icon>
       <div style="margin-right: 20px;">

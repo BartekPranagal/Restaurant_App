@@ -44,7 +44,7 @@ export class EditServiceService {
   }
 
   currentUser(): Observable<User> {
-    return this.httpClient.get<User>(this.url + '/currentUser', {
+    return this.httpClient.get<User>(this.url + '/current', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.loginService.token

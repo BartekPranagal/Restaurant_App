@@ -44,10 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/menu", "/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/pizzas/**").permitAll()
                 .antMatchers("/h2-console/**", "/h2-console").permitAll()
-                .antMatchers("/api/orders", "/api/pizza-ratings/**", "/api/orders").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/users/current").authenticated()
                 .antMatchers(HttpMethod.PUT, "/api/users/*").authenticated()
+                .antMatchers("/api/orders", "/api/pizza-ratings/**", "/api/orders").authenticated()
                 .antMatchers("/api/users*/**","/api/allOrders", "/api/backup").hasAnyRole("ADMIN")
                 .anyRequest().denyAll();
     }
