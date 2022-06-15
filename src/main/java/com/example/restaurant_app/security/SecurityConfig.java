@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**", "/h2-console").permitAll()
                 .antMatchers("/api/addOrder", "/api/addRating", "/api/orders").authenticated()
                 .antMatchers("/api/users","/api/allOrders", "/api/backup").hasAnyRole("ADMIN")
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 
     @Bean
